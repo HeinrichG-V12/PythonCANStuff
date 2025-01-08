@@ -1,0 +1,537 @@
+{
+  "version": 2,
+  "measurementSetup": {
+    "sources": [
+      {
+        "baseNode": {
+          "identifier": "ed34b6dc-4792-4ad9-8fe1-0290223df8ac",
+          "name": "CAN 1",
+          "description": [
+            "Kvaser PCIEcan HS/HS - 11618",
+            "0: CAN - 500 kbit/s"
+          ],
+          "readOnlyProperties": false,
+          "readOnlyConnections": false,
+          "disabled": true
+        },
+        "canChannelSettings": {
+          "channelNumber": 0,
+          "lockedToSerialNumber": false,
+          "deviceProductCode": "73-30130-00405-4",
+          "deviceSerialNumber": "11618",
+          "channelNumberOnDevice": 0,
+          "channelSettings": {
+            "canMode": 1,
+            "accessMode": 1,
+            "silentMode": false,
+            "busSpeed": {
+              "bitRate": 500000,
+              "timeSegment1": 11,
+              "timeSegment2": 4,
+              "syncJumpWidth": 4,
+              "numberOfSamplePoints": 1,
+              "prescaler": 1
+            }
+          },
+          "deviceCardType": 9,
+          "deviceCardNumber": 0
+        }
+      },
+      {
+        "baseNode": {
+          "identifier": "ee657167-3324-45de-a8a0-15702e7584f4",
+          "name": "CAN 2",
+          "description": [
+            "Kvaser PCIEcan HS/HS - 11618",
+            "1: CAN - 500 kbit/s"
+          ],
+          "readOnlyProperties": false,
+          "readOnlyConnections": false,
+          "disabled": false
+        },
+        "canChannelSettings": {
+          "channelNumber": 1,
+          "lockedToSerialNumber": false,
+          "deviceProductCode": "73-30130-00405-4",
+          "deviceSerialNumber": "11618",
+          "channelNumberOnDevice": 1,
+          "channelSettings": {
+            "canMode": 1,
+            "accessMode": 3,
+            "silentMode": false,
+            "busSpeed": {
+              "bitRate": 500000,
+              "timeSegment1": 11,
+              "timeSegment2": 4,
+              "syncJumpWidth": 4,
+              "numberOfSamplePoints": 1,
+              "prescaler": 1
+            }
+          },
+          "deviceCardType": 9,
+          "deviceCardNumber": 0
+        }
+      },
+      {
+        "baseNode": {
+          "identifier": "f67679d0-7096-4b90-a82f-33d52158c079",
+          "name": "DME1",
+          "description": [
+            "Id 316, 10 ms, CAN DLC: 8"
+          ],
+          "readOnlyProperties": false,
+          "readOnlyConnections": true,
+          "disabled": true
+        },
+        "trafficGeneratorSettings": {
+          "channelIdentifier": "ed34b6dc-4792-4ad9-8fe1-0290223df8ac",
+          "frame": {
+            "sourceId": "",
+            "sourceName": "",
+            "streamId": "",
+            "id": 790,
+            "messageName": "",
+            "data": [
+              223,
+              86,
+              143,
+              7,
+              204,
+              141,
+              116,
+              141
+            ],
+            "time": 0,
+            "tx": false,
+            "properties": [],
+            "signalValues": [],
+            "canFrameFlags": {
+              "flags": [
+                2
+              ]
+            },
+            "dlc": 8,
+            "hashCode": 0
+          },
+          "randomInterval": false,
+          "constantIntervalMs": 10,
+          "randomIntervalMinMs": 50,
+          "randomIntervalMaxMs": 500,
+          "numberOfMessages": 0,
+          "randomDataLength": false,
+          "randomMessageData": false,
+          "randomIdentifier": false,
+          "scanIdentifier": false,
+          "identifierMin": 0,
+          "identifierMax": 2047,
+          "randomBurstSize": false,
+          "constantBurstSize": 1,
+          "randomBurstSizeMin": 1,
+          "randomBurstSizeMax": 5
+        }
+      },
+      {
+        "baseNode": {
+          "identifier": "5bf45ee8-b4af-4623-91d8-4c2b76aba6f8",
+          "name": "DME2",
+          "description": [
+            "Id 329, 10 ms, CAN DLC: 8"
+          ],
+          "readOnlyProperties": false,
+          "readOnlyConnections": true,
+          "disabled": true
+        },
+        "trafficGeneratorSettings": {
+          "channelIdentifier": "ed34b6dc-4792-4ad9-8fe1-0290223df8ac",
+          "frame": {
+            "sourceId": "",
+            "sourceName": "",
+            "streamId": "",
+            "id": 809,
+            "messageName": "",
+            "data": [
+              82,
+              10,
+              81,
+              57,
+              79,
+              58,
+              28,
+              220
+            ],
+            "time": 0,
+            "tx": false,
+            "properties": [],
+            "signalValues": [],
+            "canFrameFlags": {
+              "flags": [
+                2
+              ]
+            },
+            "dlc": 8,
+            "hashCode": 0
+          },
+          "randomInterval": false,
+          "constantIntervalMs": 10,
+          "randomIntervalMinMs": 50,
+          "randomIntervalMaxMs": 500,
+          "numberOfMessages": 0,
+          "randomDataLength": false,
+          "randomMessageData": false,
+          "randomIdentifier": false,
+          "scanIdentifier": false,
+          "identifierMin": 0,
+          "identifierMax": 2047,
+          "randomBurstSize": false,
+          "constantBurstSize": 1,
+          "randomBurstSizeMin": 1,
+          "randomBurstSizeMax": 5
+        }
+      },
+      {
+        "baseNode": {
+          "identifier": "4d2b6557-2d15-44d6-84f3-a95435bfdc49",
+          "name": "DME4",
+          "description": [
+            "Id 545, 10 ms, CAN DLC: 8"
+          ],
+          "readOnlyProperties": false,
+          "readOnlyConnections": true,
+          "disabled": true
+        },
+        "trafficGeneratorSettings": {
+          "channelIdentifier": "ed34b6dc-4792-4ad9-8fe1-0290223df8ac",
+          "frame": {
+            "sourceId": "",
+            "sourceName": "",
+            "streamId": "",
+            "id": 1349,
+            "messageName": "",
+            "data": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "time": 0,
+            "tx": false,
+            "properties": [],
+            "signalValues": [],
+            "canFrameFlags": {
+              "flags": [
+                2
+              ]
+            },
+            "dlc": 8,
+            "hashCode": 0
+          },
+          "randomInterval": false,
+          "constantIntervalMs": 10,
+          "randomIntervalMinMs": 50,
+          "randomIntervalMaxMs": 500,
+          "numberOfMessages": 0,
+          "randomDataLength": false,
+          "randomMessageData": false,
+          "randomIdentifier": false,
+          "scanIdentifier": false,
+          "identifierMin": 0,
+          "identifierMax": 2047,
+          "randomBurstSize": false,
+          "constantBurstSize": 1,
+          "randomBurstSizeMin": 1,
+          "randomBurstSizeMax": 5
+        }
+      },
+      {
+        "baseNode": {
+          "identifier": "df7c7b12-b323-4483-b2f2-170d8961dfbd",
+          "name": "EGS1",
+          "description": [
+            "Id 43F, 100 ms, CAN DLC: 5"
+          ],
+          "readOnlyProperties": false,
+          "readOnlyConnections": true,
+          "disabled": true
+        },
+        "trafficGeneratorSettings": {
+          "channelIdentifier": "ed34b6dc-4792-4ad9-8fe1-0290223df8ac",
+          "frame": {
+            "sourceId": "",
+            "sourceName": "",
+            "streamId": "",
+            "id": 1087,
+            "messageName": "",
+            "data": [
+              27,
+              63,
+              35,
+              221,
+              106
+            ],
+            "time": 0,
+            "tx": false,
+            "properties": [],
+            "signalValues": [],
+            "canFrameFlags": {
+              "flags": [
+                2
+              ]
+            },
+            "dlc": 5,
+            "hashCode": 0
+          },
+          "randomInterval": false,
+          "constantIntervalMs": 100,
+          "randomIntervalMinMs": 50,
+          "randomIntervalMaxMs": 500,
+          "numberOfMessages": 0,
+          "randomDataLength": false,
+          "randomMessageData": false,
+          "randomIdentifier": false,
+          "scanIdentifier": false,
+          "identifierMin": 0,
+          "identifierMax": 2047,
+          "randomBurstSize": false,
+          "constantBurstSize": 1,
+          "randomBurstSizeMin": 1,
+          "randomBurstSizeMax": 5
+        }
+      }
+    ],
+    "dataProcessors": [
+      {
+        "baseNode": {
+          "identifier": "0ac8aac7-3575-47ff-823d-cf26bb9e8aec",
+          "name": "smg",
+          "description": [
+            "SMG.dbc"
+          ],
+          "readOnlyProperties": false,
+          "readOnlyConnections": false,
+          "disabled": false
+        },
+        "connectedNodes": [
+          "ee657167-3324-45de-a8a0-15702e7584f4"
+        ],
+        "canDatabasesSettings": {
+          "dbcFiles": [
+            "/home/heinrich/Nextcloud/Testhardware/CAN/KvaserProjekte/Test1/DBCs/SMG.dbc"
+          ]
+        }
+      },
+      {
+        "baseNode": {
+          "identifier": "27035ed3-8028-4e81-891e-a7639fe1a051",
+          "name": "SMG",
+          "description": [
+            "SMG.dbc"
+          ],
+          "readOnlyProperties": false,
+          "readOnlyConnections": false,
+          "disabled": false
+        },
+        "connectedNodes": [
+          "ed34b6dc-4792-4ad9-8fe1-0290223df8ac"
+        ],
+        "canDatabasesSettings": {
+          "dbcFiles": [
+            "/home/heinrich/Nextcloud/Testhardware/CAN/KvaserProjekte/Test1/DBCs/SMG.dbc"
+          ]
+        }
+      },
+      {
+        "baseNode": {
+          "identifier": "a392c3d7-3b9d-422f-a5a1-b4cb2584c125",
+          "name": "asc",
+          "description": [
+            "ASC.dbc"
+          ],
+          "readOnlyProperties": false,
+          "readOnlyConnections": false,
+          "disabled": false
+        },
+        "connectedNodes": [
+          "0ac8aac7-3575-47ff-823d-cf26bb9e8aec"
+        ],
+        "canDatabasesSettings": {
+          "dbcFiles": [
+            "/home/heinrich/Nextcloud/Testhardware/CAN/KvaserProjekte/Test1/DBCs/ASC.dbc"
+          ]
+        }
+      },
+      {
+        "baseNode": {
+          "identifier": "4110caac-333c-4480-8723-b76da1217b32",
+          "name": "DME_1",
+          "description": [
+            "DME.dbc"
+          ],
+          "readOnlyProperties": false,
+          "readOnlyConnections": false,
+          "disabled": false
+        },
+        "connectedNodes": [
+          "27035ed3-8028-4e81-891e-a7639fe1a051"
+        ],
+        "canDatabasesSettings": {
+          "dbcFiles": [
+            "/home/heinrich/Nextcloud/Testhardware/CAN/KvaserProjekte/Test1/DBCs/DME.dbc"
+          ]
+        }
+      },
+      {
+        "baseNode": {
+          "identifier": "b705eec1-db35-4b77-badc-24de70c2993f",
+          "name": "ASC",
+          "description": [
+            "ASC.dbc"
+          ],
+          "readOnlyProperties": false,
+          "readOnlyConnections": false,
+          "disabled": false
+        },
+        "connectedNodes": [
+          "4110caac-333c-4480-8723-b76da1217b32"
+        ],
+        "canDatabasesSettings": {
+          "dbcFiles": [
+            "/home/heinrich/Nextcloud/Testhardware/CAN/KvaserProjekte/Test1/DBCs/ASC.dbc"
+          ]
+        }
+      }
+    ],
+    "targets": [
+      {
+        "baseNode": {
+          "identifier": "2EE6667D-2C84-4BEB-822C-7494CC93B08E",
+          "name": "UI Streams",
+          "description": [
+            "Streams data and status to the user interface"
+          ],
+          "readOnlyProperties": true,
+          "readOnlyConnections": false,
+          "disabled": false
+        },
+        "connectedNodes": [
+          "b705eec1-db35-4b77-badc-24de70c2993f",
+          "a392c3d7-3b9d-422f-a5a1-b4cb2584c125"
+        ]
+      },
+      {
+        "baseNode": {
+          "identifier": "ed34b6dc-4792-4ad9-8fe1-0290223df8ac",
+          "name": "CAN 1 - Out",
+          "description": [
+            "Kvaser PCIEcan HS/HS - 11618",
+            "0: CAN - 500 kbit/s"
+          ],
+          "readOnlyProperties": true,
+          "readOnlyConnections": true,
+          "disabled": true
+        },
+        "connectedNodes": []
+      },
+      {
+        "baseNode": {
+          "identifier": "ee657167-3324-45de-a8a0-15702e7584f4",
+          "name": "CAN 2 - Out",
+          "description": [
+            "Kvaser PCIEcan HS/HS - 11618",
+            "1: CAN - 500 kbit/s"
+          ],
+          "readOnlyProperties": true,
+          "readOnlyConnections": true,
+          "disabled": false
+        },
+        "connectedNodes": []
+      }
+    ],
+    "language": "en"
+  },
+  "workspaces": [
+    {
+      "id": 1,
+      "title": "Workspace 1",
+      "workspacePaneId": 1
+    }
+  ],
+  "workspacePanes": [
+    {
+      "id": 1,
+      "containerData": {
+        "vertical": false,
+        "paneDataIds": [
+          3
+        ],
+        "paneRatios": [
+          1
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "containerData": {
+        "vertical": false,
+        "paneDataIds": [
+          5,
+          4
+        ],
+        "paneRatios": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "componentData": {
+        "componentId": "can-trace-view",
+        "componentProps": "{\"fixedPosition\":true,\"txFilter\":false,\"channelFilter\":\"CAN 2\",\"maxDataBytes\":null,\"columnWidths\":{}}"
+      }
+    },
+    {
+      "id": 5,
+      "containerData": {
+        "vertical": true,
+        "paneDataIds": [
+          7
+        ],
+        "paneRatios": [
+          1
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "componentData": {
+        "componentId": "can-bus-statistics-view",
+        "componentProps": "{\"channelId\":\"ee657167-3324-45de-a8a0-15702e7584f4\",\"channelCollapsed\":false,\"statisticsCollapsed\":false,\"statusCollapsed\":false}"
+      }
+    },
+    {
+      "id": 7,
+      "containerData": {
+        "vertical": true,
+        "paneDataIds": [
+          6,
+          8
+        ],
+        "paneRatios": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "componentData": {
+        "componentId": "",
+        "componentProps": ""
+      }
+    }
+  ]
+}
