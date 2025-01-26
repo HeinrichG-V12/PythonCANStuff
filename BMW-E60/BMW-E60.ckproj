@@ -1,0 +1,103 @@
+{
+  "version": 2,
+  "measurementSetup": {
+    "sources": [
+      {
+        "baseNode": {
+          "identifier": "61b5540a-58a2-41f8-9f72-cb67109be577",
+          "name": "CAN 1",
+          "description": [
+            "Kvaser PCIEcan HS/HS - 11618",
+            "0: CAN - 500 kbit/s"
+          ],
+          "readOnlyProperties": false,
+          "readOnlyConnections": false,
+          "disabled": false
+        },
+        "canChannelSettings": {
+          "channelNumber": 0,
+          "lockedToSerialNumber": false,
+          "deviceProductCode": "73-30130-00405-4",
+          "deviceSerialNumber": "11618",
+          "channelNumberOnDevice": 0,
+          "channelSettings": {
+            "canMode": 1,
+            "accessMode": 1,
+            "silentMode": false,
+            "busSpeed": {
+              "bitRate": 500000,
+              "timeSegment1": 11,
+              "timeSegment2": 4,
+              "syncJumpWidth": 4,
+              "numberOfSamplePoints": 1,
+              "prescaler": 1
+            }
+          },
+          "deviceCardType": 9,
+          "deviceCardNumber": 0
+        }
+      }
+    ],
+    "dataProcessors": [],
+    "targets": [
+      {
+        "baseNode": {
+          "identifier": "2EE6667D-2C84-4BEB-822C-7494CC93B08E",
+          "name": "UI Streams",
+          "description": [
+            "Streams data and status to the user interface"
+          ],
+          "readOnlyProperties": true,
+          "readOnlyConnections": false,
+          "disabled": false
+        },
+        "connectedNodes": [
+          "61b5540a-58a2-41f8-9f72-cb67109be577"
+        ]
+      },
+      {
+        "baseNode": {
+          "identifier": "61b5540a-58a2-41f8-9f72-cb67109be577",
+          "name": "CAN 1 - Out",
+          "description": [
+            "Kvaser PCIEcan HS/HS - 11618",
+            "0: CAN - 500 kbit/s"
+          ],
+          "readOnlyProperties": true,
+          "readOnlyConnections": true,
+          "disabled": false
+        },
+        "connectedNodes": []
+      }
+    ],
+    "language": "en"
+  },
+  "workspaces": [
+    {
+      "id": 1,
+      "title": "Workspace 1",
+      "workspacePaneId": 1
+    }
+  ],
+  "workspacePanes": [
+    {
+      "id": 1,
+      "containerData": {
+        "vertical": false,
+        "paneDataIds": [
+          2
+        ],
+        "paneRatios": [
+          1
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "componentData": {
+        "componentId": "",
+        "componentProps": ""
+      }
+    }
+  ]
+}

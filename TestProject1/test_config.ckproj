@@ -319,7 +319,7 @@
         ],
         "canDatabasesSettings": {
           "dbcFiles": [
-            "/home/heinrich/Nextcloud/Testhardware/CAN/KvaserProjekte/Test1/DBCs/SMG.dbc"
+            "./DBCs/SMG.dbc"
           ]
         }
       },
@@ -339,7 +339,7 @@
         ],
         "canDatabasesSettings": {
           "dbcFiles": [
-            "/home/heinrich/Nextcloud/Testhardware/CAN/KvaserProjekte/Test1/DBCs/SMG.dbc"
+            "./DBCs/SMG.dbc"
           ]
         }
       },
@@ -359,7 +359,7 @@
         ],
         "canDatabasesSettings": {
           "dbcFiles": [
-            "/home/heinrich/Nextcloud/Testhardware/CAN/KvaserProjekte/Test1/DBCs/ASC.dbc"
+            "./DBCs/ASC.dbc"
           ]
         }
       },
@@ -379,7 +379,7 @@
         ],
         "canDatabasesSettings": {
           "dbcFiles": [
-            "/home/heinrich/Nextcloud/Testhardware/CAN/KvaserProjekte/Test1/DBCs/DME.dbc"
+            "./DBCs/DME.dbc"
           ]
         }
       },
@@ -399,7 +399,7 @@
         ],
         "canDatabasesSettings": {
           "dbcFiles": [
-            "/home/heinrich/Nextcloud/Testhardware/CAN/KvaserProjekte/Test1/DBCs/ASC.dbc"
+            "./DBCs/ASC.dbc"
           ]
         }
       }
