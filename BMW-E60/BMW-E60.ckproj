@@ -4,22 +4,22 @@
     "sources": [
       {
         "baseNode": {
-          "identifier": "61b5540a-58a2-41f8-9f72-cb67109be577",
-          "name": "CAN 1",
+          "identifier": "4a5fe117-dd3b-400a-be09-185b78845b17",
+          "name": "CAN 2",
           "description": [
             "Kvaser PCIEcan HS/HS - 11618",
-            "0: CAN - 500 kbit/s"
+            "1: CAN - 500 kbit/s"
           ],
           "readOnlyProperties": false,
           "readOnlyConnections": false,
           "disabled": false
         },
         "canChannelSettings": {
-          "channelNumber": 0,
+          "channelNumber": 1,
           "lockedToSerialNumber": false,
           "deviceProductCode": "73-30130-00405-4",
           "deviceSerialNumber": "11618",
-          "channelNumberOnDevice": 0,
+          "channelNumberOnDevice": 1,
           "channelSettings": {
             "canMode": 1,
             "accessMode": 1,
@@ -52,16 +52,16 @@
           "disabled": false
         },
         "connectedNodes": [
-          "61b5540a-58a2-41f8-9f72-cb67109be577"
+          "4a5fe117-dd3b-400a-be09-185b78845b17"
         ]
       },
       {
         "baseNode": {
-          "identifier": "61b5540a-58a2-41f8-9f72-cb67109be577",
-          "name": "CAN 1 - Out",
+          "identifier": "4a5fe117-dd3b-400a-be09-185b78845b17",
+          "name": "CAN 2 - Out",
           "description": [
             "Kvaser PCIEcan HS/HS - 11618",
-            "0: CAN - 500 kbit/s"
+            "1: CAN - 500 kbit/s"
           ],
           "readOnlyProperties": true,
           "readOnlyConnections": true,
@@ -95,7 +95,7 @@
     {
       "id": 2,
       "componentData": {
-        "componentId": "",
+        "componentId": "can-trace-view",
         "componentProps": ""
       }
     }

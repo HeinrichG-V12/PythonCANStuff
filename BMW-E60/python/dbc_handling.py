@@ -20,7 +20,5 @@ def main():
     db. write_file ( 'e60.dbc' )
     db. close ()
 
-
-
 if __name__ == '__main__':
     main()
