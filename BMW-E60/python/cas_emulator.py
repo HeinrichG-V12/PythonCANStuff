@@ -40,7 +40,7 @@ def getChannel (channel=0,
     return ch
 
 def setup():
-    cas_db = kvadblib.Dbc(filename='e60.dbc')
+    cas_db = kvadblib.Dbc(filename='../DBCs/e60.dbc')
     klemmenstatus_msg = cas_db.get_message_by_name('KLEMMENSTATUS')
     global bound_klemmenstatus
     bound_klemmenstatus = klemmenstatus_msg.bind()

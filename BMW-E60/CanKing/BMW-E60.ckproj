@@ -38,7 +38,28 @@
         }
       }
     ],
-    "dataProcessors": [],
+    "dataProcessors": [
+      {
+        "baseNode": {
+          "identifier": "7e7795b3-aca1-4539-a7f8-da3abd257f11",
+          "name": "CAN Databases 1",
+          "description": [
+            "e60.dbc"
+          ],
+          "readOnlyProperties": false,
+          "readOnlyConnections": false,
+          "disabled": false
+        },
+        "connectedNodes": [
+          "4a5fe117-dd3b-400a-be09-185b78845b17"
+        ],
+        "canDatabasesSettings": {
+          "dbcFiles": [
+            "/home/heinrich/git/PythonCANStuff/BMW-E60/DBCs/e60.dbc"
+          ]
+        }
+      }
+    ],
     "targets": [
       {
         "baseNode": {
@@ -52,7 +73,7 @@
           "disabled": false
         },
         "connectedNodes": [
-          "4a5fe117-dd3b-400a-be09-185b78845b17"
+          "7e7795b3-aca1-4539-a7f8-da3abd257f11"
         ]
       },
       {
@@ -85,7 +106,7 @@
       "containerData": {
         "vertical": false,
         "paneDataIds": [
-          2
+          3
         ],
         "paneRatios": [
           1
@@ -93,9 +114,42 @@
       }
     },
     {
-      "id": 2,
+      "id": 3,
+      "containerData": {
+        "vertical": true,
+        "paneDataIds": [
+          5
+        ],
+        "paneRatios": [
+          1
+        ]
+      }
+    },
+    {
+      "id": 4,
       "componentData": {
         "componentId": "can-trace-view",
+        "componentProps": "{\"fixedPosition\":true,\"txFilter\":null,\"channelFilter\":null,\"maxDataBytes\":null,\"columnWidths\":{}}"
+      }
+    },
+    {
+      "id": 5,
+      "containerData": {
+        "vertical": true,
+        "paneDataIds": [
+          4,
+          6
+        ],
+        "paneRatios": [
+          0.62,
+          0.38
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "componentData": {
+        "componentId": "",
         "componentProps": ""
       }
     }
