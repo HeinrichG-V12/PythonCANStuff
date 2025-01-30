@@ -52,11 +52,7 @@ BO_ 304 KLEMMENSTATUS: 5 CAS
  SG_ CHKSM_KL : 36|4@1+ (1,0) [0|15] "Checksum" CAS
 
 BO_ 1246 NETZWERKMANAGEMENT_GWS: 8 GWS
- SG_ Byte0 : 0|8@1+ (1,0) [0|0] "Netzwerkmanagement_Byte0"  GWS
-
-BO_ 408 BEDIENUNG_GWS2: 5 GWS
- SG_ Byte0 : 0|4@1+ (1,0) [0|0] "Bedienung_Byte0"  GWS
- SG_ ALIV_KL : 0|4@1+ (1,0) [0|14] "Alive counter" CAS
+ SG_ Byte0 : 0|8@1+ (1,0) [0|0] "Byte0"  GWS
 
 BA_DEF_ "BusType" STRING ;
 BA_DEF_ BO_ "GenMsgBackgroundColor" STRING ;

@@ -3,6 +3,7 @@
 from canlib import kvadblib
 from canlib import canlib
 from canlib.canlib import ChannelData
+from canlib import Frame
 from pprint import pprint
 
 from threading import Timer,Thread,Event
@@ -101,14 +102,22 @@ def build_cas_msg():
     bound_klemmenstatus.ALIV_KL.phys = get_klemmenstatus_counter()
     bound_klemmenstatus.CHKSM_KL.phys = calc_klemmenstatus_crc()
 
+def build_egs1_msg():
+    global egs_message1
+    egs_message1 = Frame(id_=466, data=bytearray(b'\xC3\x0C\x8F\x1C\xF0\xFF'))
+
 def can_100ms_task():
     global bound_klemmenstatus
     global ch0
 
     build_cas_msg()
 
+    build_egs1_msg()
+
     try:
+        i = 0
         ch0.writeWait(bound_klemmenstatus._frame, timeout = 2)
+        # ch0.writeWait(egs_message1, timeout = 2)
     except canlib.exceptions.CanTimeout:
         print('CAS: timeout aquired!')
 
