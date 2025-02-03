@@ -1,66 +1,103 @@
 VERSION ""
 
-NS_ : 
-	NS_DESC_
-	CM_
-	BA_DEF_
-	BA_
-	VAL_
-	CAT_DEF_
-	CAT_
-	FILTER
-	BA_DEF_DEF_
-	EV_DATA_
-	ENVVAR_DATA_
-	SGTYPE_
-	SGTYPE_VAL_
-	BA_DEF_SGTYPE_
-	BA_SGTYPE_
-	SIG_TYPE_REF_
-	VAL_TABLE_
-	SIG_GROUP_
-	SIG_VALTYPE_
-	SIGTYPE_VALTYPE_
-	BO_TX_BU_
-	BA_DEF_REL_
-	BA_REL_
-	BA_DEF_DEF_REL_
-	BU_SG_REL_
-	BU_EV_REL_
-	BU_BO_REL_
-	SG_MUL_VAL_
 
-BS_:
+NS_ :
+    NS_DESC_
+    CM_
+    BA_DEF_
+    BA_
+    VAL_
+    CAT_DEF_
+    CAT_
+    FILTER
+    BA_DEF_DEF_
+    EV_DATA_
+    ENVVAR_DATA_
+    SGTYPE_
+    SGTYPE_VAL_
+    BA_DEF_SGTYPE_
+    BA_SGTYPE_
+    SIG_TYPE_REF_
+    VAL_TABLE_
+    SIG_GROUP_
+    SIG_VALTYPE_
+    SIGTYPE_VALTYPE_
+    BO_TX_BU_
+    BA_DEF_REL_
+    BA_REL_
+    BA_DEF_DEF_REL_
+    BU_SG_REL_
+    BU_EV_REL_
+    BU_BO_REL_
+    SG_MUL_VAL_
 
-BU_: CAS GWS
-
+BS_: 
+BU_: CAS GWS EGS 
 BO_ 304 KLEMMENSTATUS: 5 CAS
- SG_ ST_KL_R : 0|2@1+ (1,0) [0|0] "status terminal R"  CAS
- SG_ ST_KL_15 : 2|2@1+ (1,0) [0|0] "status terminal 15"  CAS
- SG_ ST_KL_50 : 4|2@1+ (1,0) [0|0] "status terminal 50"  CAS
- SG_ ST_KEY_VLD : 6|2@1+ (1,0) [0|0] "status valid key" CAS
- SG_ NO_KEY : 8|4@1+ (1,0) [0|0] "key number"  CAS
- SG_ ST_KEY_TYP : 12|4@1+ (1,0) [0|0] "" CAS
- SG_ ST_KEY_PLGD : 16|2@1+ (1,0) [0|0] ""  CAS
- SG_ ST_VHIM : 18|2@1+ (1,0) [0|0] "Status immobilizer" CAS
- SG_ ST_LOKG_STCO : 20|2@1+ (1,0) [0|0] "" CAS
- SG_ ST_KLCK : 22|2@1+ (1,0) [0|0] "" CAS
- SG_ PO_ID_PU : 24|2@1+ (1,0) [0|0] "" CAS
- SG_ ST_PSVA_ACV : 26|2@1+ (1,0) [0|0] "" CAS
- SG_ ST_ILK_COD_BM : 28|2@1+ (1,0) [0|0] "" CAS
- SG_ ALIV_KL : 32|4@1+ (1,0) [0|14] "Alive counter" CAS
- SG_ CHKSM_KL : 36|4@1+ (1,0) [0|15] "Checksum" CAS
+   SG_ ST_KL_R : 0|2@1+ (1,0) [0|0] "" CAS
+   SG_ ST_KL_15 : 2|2@1+ (1,0) [0|0] "" CAS
+   SG_ ST_KL_50 : 4|2@1+ (1,0) [0|0] "" CAS
+   SG_ ST_KEY_VLD : 6|2@1+ (1,0) [0|0] "" CAS
+   SG_ NO_KEY : 8|4@1+ (1,0) [0|0] "" CAS
+   SG_ ST_KEY_TYP : 12|4@1+ (1,0) [0|0] "" CAS
+   SG_ ST_KEY_PLGD : 16|2@1+ (1,0) [0|0] "" CAS
+   SG_ ST_VHIM : 18|2@1+ (1,0) [0|0] "" CAS
+   SG_ ST_LOKG_STCO : 20|2@1+ (1,0) [0|0] "" CAS
+   SG_ ST_KLCK : 22|2@1+ (1,0) [0|0] "" CAS
+   SG_ PO_ID_PU : 24|2@1+ (1,0) [0|0] "" CAS
+   SG_ ST_PSVA_ACV : 26|2@1+ (1,0) [0|0] "" CAS
+   SG_ ST_ILK_COD_BM : 28|2@1+ (1,0) [0|0] "" CAS
+   SG_ ALIV_KL : 32|4@1+ (1,0) [0|14] "" CAS
+   SG_ CHKSM_KL : 36|4@1+ (1,0) [0|15] "" CAS
 
 BO_ 1246 NETZWERKMANAGEMENT_GWS: 8 GWS
- SG_ Byte0 : 0|8@1+ (1,0) [0|0] "Netzwerkmanagement_Byte0"  GWS
+   SG_ Byte0 : 0|8@1+ (1,0) [0|0] "" GWS
 
 BO_ 408 BEDIENUNG_GWS2: 5 GWS
- SG_ Byte0 : 0|4@1+ (1,0) [0|0] "Bedienung_Byte0"  GWS
- SG_ ALIV_KL : 0|4@1+ (1,0) [0|14] "Alive counter" CAS
+   SG_ Byte0 : 0|4@1+ (1,0) [0|0] "" GWS
+   SG_ ALIV_KL : 0|4@1+ (1,0) [0|14] "" GWS
+
+BO_ 466 DISPLAY_TRANSMISSION_DATA: 6 EGS
+   SG_ DISPLAY_TRANSMISSION_ALIV : 28|4@1+ (1,0) [0|14] "" Vector__XXX
+   SG_ DISPLAY_TRANSMISSION_CONST1 : 24|4@1+ (1,0) [0|14] "" EGS
+
+BO_ 418 TRANSMISSION_DATA_2: 4 EGS
+   SG_ RPM_GRB_TURB : 0|16@1+ (0.125,6) [0|8191.75] "1/min" EGS
+   SG_ Byte2 : 16|8@1+ (1,0) [0|254] "" EGS
+   SG_ Byte3 : 24|8@1+ (1,0) [0|254] "" EGS
+
+BO_ 186 TRANSMISSION_DATA_1: 8 EGS
+   SG_ ST_RCPT_EGS_ACC : 22|2@1+ (1,0) [0|0] "" Vector__XXX
+   SG_ RPM_GRB_NEGL : 24|16@1+ (0.125,0) [0|0] "1/min" Vector__XXX
+   SG_ CTR_EMF_LOCA : 20|2@1+ (1,0) [0|0] "" Vector__XXX
+   SG_ ST_HYPP_ACV : 56|2@1+ (1,0) [0|0] "" Vector__XXX
+   SG_ ALIV_GRB : 48|4@1+ (1,0) [0|0] "" Vector__XXX
+   SG_ ST_MOD_GRB : 52|3@1+ (1,0) [0|0] "" Vector__XXX
+   SG_ CHKSM_GRB : 40|8@1+ (1,0) [0|0] "" Vector__XXX
+   SG_ GRDT_REIN : 8|12@1+ (0.125,0) [0|0] "1/m" Vector__XXX
+   SG_ ST_GR_GRB : 0|4@1+ (1,0) [0|0] "" Vector__XXX
+   SG_ ST_GRLV_ACV : 4|2@1+ (1,0) [0|0] "" Vector__XXX
+   SG_ ST_CCLT : 6|2@1+ (1,0) [0|0] "" Vector__XXX
+   SG_ BLAH : 55|1@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1176 NETZWERKMANAGEMENT_EGS: 8 EGS
+   SG_ Byte0 : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+   SG_ Byte1 : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+   SG_ Byte2 : 16|8@1+ (1,0) [0|0] "" Vector__XXX
+   SG_ Byte3 : 24|8@1+ (1,0) [0|0] "" Vector__XXX
+   SG_ Byte4 : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+   SG_ Byte5 : 40|8@1+ (1,0) [0|0] "" Vector__XXX
+   SG_ Byte6 : 48|8@1+ (1,0) [0|0] "" Vector__XXX
+   SG_ Byte7 : 56|8@1+ (1,0) [0|0] "" Vector__XXX
+
 
 BA_DEF_ "BusType" STRING ;
 BA_DEF_ BO_ "GenMsgBackgroundColor" STRING ;
 BA_DEF_ BO_ "GenMsgForegroundColor" STRING ;
+BA_DEF_ BO_ "matchingcriteria" INT 0 0;
+BA_DEF_ BO_ "filterlabeling" INT 0 0;
 BA_DEF_DEF_ "BusType" "";
 BA_DEF_DEF_ "GenMsgBackgroundColor" "#ffffff";
 BA_DEF_DEF_ "GenMsgForegroundColor" "#000000";
+BA_DEF_DEF_ "matchingcriteria" 0;
+CM_ SG_ 418 RPM_GRB_TURB "turbine_speed";

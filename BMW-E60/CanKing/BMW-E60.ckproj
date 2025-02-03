@@ -129,7 +129,7 @@
       "id": 4,
       "componentData": {
         "componentId": "can-trace-view",
-        "componentProps": "{\"fixedPosition\":true,\"txFilter\":null,\"channelFilter\":null,\"maxDataBytes\":null,\"columnWidths\":{}}"
+        "componentProps": "{\"fixedPosition\":true,\"txFilter\":null,\"channelFilter\":null,\"maxDataBytes\":null,\"columnWidths\":{\"messageName\":225.4453125}}"
       }
     },
     {
