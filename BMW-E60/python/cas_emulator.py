@@ -75,8 +75,11 @@ def setup():
     global transmission_data_1_alive_counter
     transmission_data_1_alive_counter = 0
 
-    global bound_display_transmission_data_byte0
-    bound_display_transmission_data_byte0 = 0
+    global display_transmission_data_mode
+    display_transmission_data_mode = 0xf0 # automatic mode
+
+    global gearbox_gear
+    gearbox_gear = 0x78 # initial parking
 
 def shutdown():
     global ch0
@@ -136,16 +139,18 @@ def build_cas_msg():
 
 def build_display_transmission_data_msg():
     global bound_display_transmission_data
-    global bound_display_transmission_data_byte0
 
-    bound_display_transmission_data._frame.data[0] = 0x78   # 0x78 (D), 0xb4 (N), 0xc3 (P), 0xd2 (R), 0xe1 (P)
-    bound_display_transmission_data._frame.data[1] = 0x0C   # immer 0x0c
+    # bound_display_transmission_data._frame.data[0] = 0x78   # 0x78 (D), 0xb4 (N), 0xc3 (P), 0xd2 (R), 0xe1 (P)
+    bound_display_transmission_data._frame.data[0] = gearbox_gear
 
-    # bound_display_transmission_data._frame.data[2] = 0x8f   # 0x8b, 0x8d, 0x8f (keine Auswirkungen)
+    bound_display_transmission_data._frame.data[1] = 0x0C   # 
 
-    bound_display_transmission_data._frame.data[2] = bound_display_transmission_data_byte0
+    bound_display_transmission_data._frame.data[2] = 0x8f   # 0x8b, 0x8d, 0x8f (keine Auswirkungen)
 
-    bound_display_transmission_data._frame.data[4] = 0xF0   # immer 0xf0
+    # bound_display_transmission_data._frame.data[4] = 0xF2   # immer 0xf0
+    
+    bound_display_transmission_data._frame.data[4] = display_transmission_data_mode
+
     bound_display_transmission_data._frame.data[5] = 0xFF   # immer 0xff
     bound_display_transmission_data.DISPLAY_TRANSMISSION_ALIV.phys = get_display_transmission_data_counter()
     bound_display_transmission_data.DISPLAY_TRANSMISSION_CONST1.phys = 0xC
@@ -185,16 +190,12 @@ def build_networkmanagement_egs():
     bound_networkmanagement_egs.Byte6.phys = 0xFF
     bound_networkmanagement_egs.Byte6.phys = 0xFF
 
-def my2s_counter():
-    global bound_display_transmission_data_byte0
-    bound_display_transmission_data_byte0 += 1
-
-def can_100ms_task():
+def can_200ms_task():
     global bound_klemmenstatus
     global bound_display_transmission_data
     global bound_transmission_data_1
     global bound_transmission_data_2
-    global bound_networkmanagement_egs
+    
     global ch0
 
     build_cas_msg()
@@ -205,24 +206,54 @@ def can_100ms_task():
 
     build_transmission_data_2()
 
-    build_networkmanagement_egs()
-
     try:
         # ch0.writeWait(bound_klemmenstatus._frame, timeout = 2)
         ch0.writeWait(bound_display_transmission_data._frame, timeout = 2)
         # ch0.writeWait(bound_transmission_data_1._frame, timeout = 2)
         # ch0.writeWait(bound_transmission_data_2._frame, timeout = 2)
-        ch0.writeWait(bound_networkmanagement_egs._frame, timeout = 2)
     except canlib.exceptions.CanTimeout:
         print('CAS: timeout aquired!')
 
+def can_10ms_task():
+    global display_transmission_data_mode
+    global gearbox_gear
+
+    try:
+        received_msg = ch0.readSpecificSkip(0x198)
+        # print('Received signal, Byte 3: %X' % (received_msg.data[3]))
+
+        match received_msg.data[2]:
+            case 0xcf:
+                # automatik:
+                display_transmission_data_mode = 0xF0
+
+            case 0xc8:
+                # manuelle Gase
+                display_transmission_data_mode = 0xF2
+
+
+    except canlib.exceptions.CanNoMsg:
+        i = 0
+    
+def can_498_task():
+    global bound_networkmanagement_egs
+    build_networkmanagement_egs()
+
+    try:
+        ch0.writeWait(bound_networkmanagement_egs._frame, timeout = 10)
+    except canlib.exceptions.CanTimeout:
+        print('can_498_task: timeout aquired!')
 
 def main():
    setup()
    print("--> canlib version:", canlib.dllversion())
-   t1 = perpetualTimer(.1, can_100ms_task)
-   t2 = perpetualTimer(1, my2s_counter)
-   t1.start()
+   timer_1d2 = perpetualTimer(.2, can_200ms_task)
+   timer_1d2.start()
+
+   timer_498 = perpetualTimer(.9, can_498_task)
+   timer_498.start()
+
+   t2 = perpetualTimer(.01, can_10ms_task)
    t2.start()
 
 if __name__ == '__main__':

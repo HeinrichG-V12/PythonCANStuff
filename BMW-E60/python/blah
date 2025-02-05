@@ -1,0 +1,25 @@
+            case 0xce:
+                # move up
+                match gearbox_gear:
+                    case 0xe1:
+                        # we are in parking mode, so go to n:
+                        gearbox_gear = 0xb4
+                    case 0xb4:
+                        # we are in neutral mode, so go to r:
+                        gearbox_gear = 0xd2
+                    case 0x78:
+                        #we are in driving mode, so go to n
+                        gearbox_gear = 0xb4
+            
+            case 0xcc:
+                # move down
+                match gearbox_gear:
+                    case 0xe1:
+                        # we are in parking mode, so go to d:
+                        gearbox_gear = 0x78
+                    case 0xb4:
+                        # we are in neutral mode, so go to d:
+                        gearbox_gear = 0x78
+                    case 0xd2:
+                        # we are in r, so go to n:
+                        gearbox_gear = 0xb4
