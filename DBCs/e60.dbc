@@ -54,12 +54,18 @@ BO_ 1246 NETZWERKMANAGEMENT_GWS: 8 GWS
    SG_ Byte0 : 0|8@1+ (1,0) [0|0] "" GWS
 
 BO_ 408 BEDIENUNG_GWS2: 5 GWS
-   SG_ Byte0 : 0|4@1+ (1,0) [0|0] "" GWS
-   SG_ ALIV_KL : 0|4@1+ (1,0) [0|14] "" GWS
+   SG_ ALIV_KL : 0|4@1+ (1,0) [0|14] "" Vector__XXX
+   SG_ LOCK_STATUS : 28|4@1+ (1,0) [0|14] "" Vector__XXX
+   SG_ PARKING_BUTTON : 24|4@1+ (1,0) [0|14] "" Vector__XXX
 
 BO_ 466 DISPLAY_TRANSMISSION_DATA: 6 EGS
+   SG_ Byte0 : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+   SG_ Byte1 : 8|8@1+ (1,0) [0|0] "" Vector__XXX
+   SG_ Byte2 : 16|8@1+ (1,0) [0|0] "" Vector__XXX
    SG_ DISPLAY_TRANSMISSION_ALIV : 28|4@1+ (1,0) [0|14] "" Vector__XXX
    SG_ DISPLAY_TRANSMISSION_CONST1 : 24|4@1+ (1,0) [0|14] "" EGS
+   SG_ Byte4 : 32|8@1+ (1,0) [0|0] "" Vector__XXX
+   SG_ Byte5 : 40|8@1+ (1,0) [0|0] "" Vector__XXX
 
 BO_ 418 TRANSMISSION_DATA_2: 4 EGS
    SG_ RPM_GRB_TURB : 0|16@1+ (0.125,6) [0|8191.75] "1/min" EGS
@@ -90,14 +96,18 @@ BO_ 1176 NETZWERKMANAGEMENT_EGS: 8 EGS
    SG_ Byte6 : 48|8@1+ (1,0) [0|0] "" Vector__XXX
    SG_ Byte7 : 56|8@1+ (1,0) [0|0] "" Vector__XXX
 
-
 BA_DEF_ "BusType" STRING ;
 BA_DEF_ BO_ "GenMsgBackgroundColor" STRING ;
 BA_DEF_ BO_ "GenMsgForegroundColor" STRING ;
+BA_DEF_ BO_ "matchingcriteria" INT 0 0;
+BA_DEF_ BO_ "filterlabeling" INT 0 0;
 BA_DEF_ BO_ "matchingcriteria" INT 0 0;
 BA_DEF_ BO_ "filterlabeling" INT 0 0;
 BA_DEF_DEF_ "BusType" "";
 BA_DEF_DEF_ "GenMsgBackgroundColor" "#ffffff";
 BA_DEF_DEF_ "GenMsgForegroundColor" "#000000";
 BA_DEF_DEF_ "matchingcriteria" 0;
+BA_DEF_DEF_ "matchingcriteria" 0;
 CM_ SG_ 418 RPM_GRB_TURB "turbine_speed";
+VAL_ 408 LOCK_STATUS 12 "unpressed" 9 "pressed";
+VAL_ 408 PARKING_BUTTON 1 "pressed_1" 2 "pressed_2" 3 "pressed_3" 4 "pressed_4" 5 "pressed_5";
