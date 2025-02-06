@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import argparse
 import threading
 from time import sleep
 from canlib import canlib, kvadblib
@@ -17,9 +18,9 @@ def get_display_transmission_data_counter():
 
     return display_transmission_data_alive_counter
 
-def consumer_thread():
+def consumer_thread(timerSleep, args):
     thread_name = threading.current_thread().name
-    canChannel = canlib.openChannel(channel=0, bitrate=canlib.canBITRATE_500K)
+    canChannel = canlib.openChannel(channel=args.channel, bitrate=canlib.canBITRATE_500K)
     canChannel.iocontrol.local_txecho = False
     canChannel.setBusOutputControl(canlib.canDRIVER_NORMAL)
     canChannel.busOn()
@@ -35,14 +36,14 @@ def consumer_thread():
             print('Killing thread %s' % thread_name)
             break
 
-        sleep(.01)
+        sleep(timerSleep)
     
     canChannel.busOff()
     canChannel.close()
     
-def thread_10ms():
+def thread_10ms(timerSleep, args):
     thread_name = threading.current_thread().name
-    canChannel = canlib.openChannel(channel=0, bitrate=canlib.canBITRATE_500K)
+    canChannel = canlib.openChannel(channel=args.channel, bitrate=canlib.canBITRATE_500K)
     canChannel.iocontrol.local_txecho = False
     canChannel.setBusOutputControl(canlib.canDRIVER_NORMAL)
     canChannel.busOn()
@@ -50,7 +51,7 @@ def thread_10ms():
     while True:
         try:
             print('blupp')
-            sleep(2)
+            sleep(timerSleep)
         except KeyboardInterrupt:
             print('Killing thread %s' % thread_name)
             break
@@ -58,9 +59,9 @@ def thread_10ms():
     canChannel.busOff()
     canChannel.close()
 
-def thread_network_egs(timerSleep):
+def thread_network_egs(timerSleep, args):
     thread_name = threading.current_thread().name
-    canChannel = canlib.openChannel(channel=0, bitrate=canlib.canBITRATE_500K)
+    canChannel = canlib.openChannel(channel=args.channel, bitrate=canlib.canBITRATE_500K)
     canChannel.iocontrol.local_txecho = False
     canChannel.setBusOutputControl(canlib.canDRIVER_NORMAL)
     canChannel.busOn()
@@ -90,9 +91,9 @@ def thread_network_egs(timerSleep):
     canChannel.busOff()
     canChannel.close()
 
-def thread_display_egs_data(timerSleep):
+def thread_display_egs_data(timerSleep, args):
     thread_name = threading.current_thread().name
-    canChannel = canlib.openChannel(channel=0, bitrate=canlib.canBITRATE_500K)
+    canChannel = canlib.openChannel(channel=args.channel, bitrate=canlib.canBITRATE_500K)
     canChannel.iocontrol.local_txecho = False
     canChannel.setBusOutputControl(canlib.canDRIVER_NORMAL)
     canChannel.busOn()
@@ -123,18 +124,22 @@ def thread_display_egs_data(timerSleep):
     canChannel.close()
 
 if __name__ =="__main__":
+    parser = argparse.ArgumentParser(description="Emulates some functionality of E60/E65 EGS")
+    parser.add_argument('--channel', '-ch', type=int, default=1, help=('The channel to work with.'), required=True)
+    args = parser.parse_args()
+
     global canDBC
     global display_transmission_data_alive_counter
     canDBC = kvadblib.Dbc(filename='../DBCs/e60.dbc')
     display_transmission_data_alive_counter = 0
 
-    thread1 = threading.Thread(target = consumer_thread, name='consumer_thread')
+    thread1 = threading.Thread(target = consumer_thread, name='consumer_thread', args=(.01,args, ))
 
-    thread2 = threading.Thread(target = thread_10ms, name='producer_thread_10ms')
+    thread2 = threading.Thread(target = thread_10ms, name='producer_thread_10ms', args=(1,args, ))
 
-    thread3 = threading.Thread(target = thread_network_egs, name='thread_network_egs', args=(.9,))
+    thread3 = threading.Thread(target = thread_network_egs, name='thread_network_egs', args=(.9,args, ))
 
-    thread4 = threading.Thread(target = thread_display_egs_data, name='thread_display_egs_data', args=(.2,))
+    thread4 = threading.Thread(target = thread_display_egs_data, name='thread_display_egs_data', args=(.2, args,))
 
     thread1.daemon = True
     thread2.daemon = True
