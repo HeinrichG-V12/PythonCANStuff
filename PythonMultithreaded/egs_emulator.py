@@ -2,8 +2,14 @@
 
 import argparse
 import threading
+import logging
 from time import sleep
 from canlib import canlib, kvadblib
+
+global actual_gear
+actual_gear = 0xe1
+
+logging.basicConfig(level=logging.DEBUG, format='[%(levelname)s] (%(threadName)-9s) %(message)s',)
 
 def get_can_message (msg_name):
     global canDBC
@@ -18,7 +24,24 @@ def get_display_transmission_data_counter():
 
     return display_transmission_data_alive_counter
 
-def consumer_thread(timerSleep, args):
+def process_198 (message):
+    global actual_gear
+
+    msg = get_can_message('BEDIENUNG_GWS2')
+    msg_1 = msg.bind(message)
+
+    if msg_1.PARKING_BUTTON.phys > 0:
+        actual_gear = 0xe1
+    
+    match msg_1.LEVER_MOVEMENT.phys:
+        case 0xe | 0xc:
+            actual_gear = 0xb4
+        case 0xd:
+            actual_gear = 0xd2
+        case 0xb:
+            actual_gear = 0x78
+        
+def can_listener_thread(timerSleep, args):
     thread_name = threading.current_thread().name
     canChannel = canlib.openChannel(channel=args.channel, bitrate=canlib.canBITRATE_500K)
     canChannel.iocontrol.local_txecho = False
@@ -28,6 +51,11 @@ def consumer_thread(timerSleep, args):
     while True:
         try:
             message = canChannel.read()
+
+            match message.id:
+                case 0x198:
+                    process_198(message)
+
             # print('Received message with id %X, timestamp: %i' % (message.id, message.timestamp))
         except canlib.exceptions.CanNoMsg:
             # rx buffer is empty
@@ -50,7 +78,7 @@ def thread_10ms(timerSleep, args):
 
     while True:
         try:
-            print('blupp')
+            logging.debug('blupp')
             sleep(timerSleep)
         except KeyboardInterrupt:
             print('Killing thread %s' % thread_name)
@@ -92,6 +120,7 @@ def thread_network_egs(timerSleep, args):
     canChannel.close()
 
 def thread_display_egs_data(timerSleep, args):
+    global actual_gear
     thread_name = threading.current_thread().name
     canChannel = canlib.openChannel(channel=args.channel, bitrate=canlib.canBITRATE_500K)
     canChannel.iocontrol.local_txecho = False
@@ -102,10 +131,11 @@ def thread_display_egs_data(timerSleep, args):
         try:
             can_message = get_can_message('DISPLAY_TRANSMISSION_DATA')
             bound_msg = can_message.bind()
-            bound_msg.Byte0.phys = 0x78
-            bound_msg.Byte1.phys = 0x0c
+            bound_msg.STAT_GEAR.phys = actual_gear
+            bound_msg.STAT_MODE.phys = 0x0
+            bound_msg.Byte1_low.phys = 0xC
             bound_msg.Byte2.phys = 0x8f
-            bound_msg.Byte4.phys = 0xf0
+            bound_msg.DRIVE_MODE.phys = 0xf0
             bound_msg.Byte5.phys = 0xFF
 
             bound_msg.DISPLAY_TRANSMISSION_CONST1.phys = 0xC
@@ -133,7 +163,7 @@ if __name__ =="__main__":
     canDBC = kvadblib.Dbc(filename='../DBCs/e60.dbc')
     display_transmission_data_alive_counter = 0
 
-    thread1 = threading.Thread(target = consumer_thread, name='consumer_thread', args=(.01,args, ))
+    thread1 = threading.Thread(target = can_listener_thread, name='can_listener_thread', args=(.01,args, ))
 
     thread2 = threading.Thread(target = thread_10ms, name='producer_thread_10ms', args=(1,args, ))
 

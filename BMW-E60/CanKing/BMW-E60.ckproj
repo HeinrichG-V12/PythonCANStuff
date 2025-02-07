@@ -41,8 +41,8 @@
     "dataProcessors": [
       {
         "baseNode": {
-          "identifier": "7e7795b3-aca1-4539-a7f8-da3abd257f11",
-          "name": "CAN Databases 1",
+          "identifier": "71687a36-b8cd-4fe8-b4e1-de21ec8cf95f",
+          "name": "E60",
           "description": [
             "e60.dbc"
           ],
@@ -55,7 +55,7 @@
         ],
         "canDatabasesSettings": {
           "dbcFiles": [
-            "/home/heinrich/git/PythonCANStuff/BMW-E60/DBCs/e60.dbc"
+            "/home/heinrich/git/PythonCANStuff/DBCs/e60.dbc"
           ]
         }
       }
@@ -73,7 +73,7 @@
           "disabled": false
         },
         "connectedNodes": [
-          "7e7795b3-aca1-4539-a7f8-da3abd257f11"
+          "71687a36-b8cd-4fe8-b4e1-de21ec8cf95f"
         ]
       },
       {

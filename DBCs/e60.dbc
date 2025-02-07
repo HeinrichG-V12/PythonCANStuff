@@ -77,15 +77,15 @@ BO_ 186 TRANSMISSION_DATA_1: 8 EGS
 
 BO_ 408 BEDIENUNG_GWS2: 5 GWS2
  SG_ ALIV_KL : 0|4@1+ (1,0) [0|14] "" Vector__XXX
- SG_ LOCK_STATUS : 28|4@1+ (1,0) [0|14] "" Vector__XXX
+ SG_ LEVER_MOVEMENT : 16|4@1+ (1,0) [0|14] "" Vector__XXX
  SG_ PARKING_BUTTON : 24|4@1+ (1,0) [0|14] "" Vector__XXX
-
-
+ SG_ UNLOCK_BUTTON_STATUS : 28|4@1+ (1,0) [0|14] "" Vector__XXX
+ 
 
 CM_ SG_ 466 Byte2 "0x8B or 0x8D, constant values";
 VAL_ 466 STAT_MODE 10 "M6" 9 "M5" 8 "M4" 7 "M3" 6 "M2" 5 "M1" 0 "Automatic" ;
 VAL_ 466 STAT_GEAR 225 "P" 210 "R" 180 "N" 120 "D" ;
 VAL_ 466 DRIVE_MODE 242 "Drive mode, ena manual" 241 "Drive mode, sport (?)" 240 "Drive mode, automatic" 207 "Non-drive mode (Pn or N)" ;
-VAL_ 408 LOCK_STATUS 12 "Unpressed" 9 "Pressed" ;
-VAL_ 408 PARKING_BUTTON 15 "Unpressed" 5 "Pressed_5" 4 "Pressed_4" 3 "Pressed_3" 2 "Pressed_2" 1 "Pressed_1" ;
-
+VAL_ 408 UNLOCK_BUTTON_STATUS 12 "Unpressed" 9 "Pressed" ;
+VAL_ 408 PARKING_BUTTON 5 "Pressed_5" 4 "Pressed_4" 3 "Pressed_3" 2 "Pressed_2" 1 "Pressed_1" 0 "Unpressed";
+VAL_ 408 LEVER_MOVEMENT 15 "Untoched" 14 "Push up" 13 "Over-push up" 12 "Pull down" 11 "Over-pull down";
